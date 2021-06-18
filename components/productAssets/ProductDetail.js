@@ -121,6 +121,7 @@ class ProductDetail extends Component {
       price,
       variant_groups: variantGroups,
     } = this.props.product;
+    const soldOut = this.props.product.is.sold_out;
     const priceSymbol = this.getCurrencySymbol(price.formatted_with_symbol);
     const { selectedOptions } = this.state;
     const reg = /(<([^>]+)>)/ig;

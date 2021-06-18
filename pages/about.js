@@ -26,7 +26,7 @@ const About = () => (
         <div className="col-12 col-lg-6">
           <div className="about-image h-100">
             <div className="d-flex align-items-center justify-content-center h-100">
-              <img src="/images/home-3.jpg" alt="freischwinger"/>
+              <img src="/images/intro_moebel.mp4" alt="Lagerbestand"/>
             </div>
           </div>
         </div>
