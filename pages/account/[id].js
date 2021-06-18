@@ -7,7 +7,6 @@ import moment from 'moment';
 import commerce from '../../lib/commerce';
 import Root from '../../components/common/Root';
 import Footer from '../../components/common/Footer';
-import TemplatePage from '../../components/common/TemplatePage';
 import LoggedOut from '../loggedOut';
 
 export default function SingleOrderPage() {
@@ -16,10 +15,7 @@ export default function SingleOrderPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [customer, customerLoading] = useSelector((state) => [
-    state.customer,
-    state.loading.customer,
-  ]);
+  const customer = useSelector(state => state.customer);
 
   /**
    * Verify the user is logged in, if not send them back to home. Only runs when in the
@@ -33,16 +29,12 @@ export default function SingleOrderPage() {
   verifyAuth();
 
   useEffect(() => {
-    if (!customer) {
-      return;
-    }
-
     const fetchOrderById = async (id) => {
       try {
         const order = await commerce.customer.getOrder(id, customer.id);
 
         setLoading(false);
-        setData(order);
+        setData(order.data);
       } catch (err) {
         setLoading(false);
         setError(err?.message);
@@ -50,7 +42,7 @@ export default function SingleOrderPage() {
     };
 
     fetchOrderById(id);
-  }, [id, customer]);
+  }, [id]);
 
   /**
    * Create order date if available
@@ -98,7 +90,6 @@ export default function SingleOrderPage() {
           <div>
             <div><strong>{ data.name }</strong></div>
             <div>{ data.street }</div>
-            { data.street_2 && <div>{ data.street_2 }</div> }
             <div>{ data.town_city}{(data.town_city && data.county_state) ? ',':'' } { data.county_state }</div>
             <div>{ data.country}{(data.town_city && data.county_state) ? ',':'' } { data.postal_zip_code }</div>
           </div>
@@ -122,7 +113,6 @@ export default function SingleOrderPage() {
           <div>
             <div><strong>{ data.name }</strong></div>
             <div>{ data.street }</div>
-            { data.street_2 && <div>{ data.street_2 }</div> }
             <div>{ data.town_city}{(data.town_city && data.county_state) ? ',':'' }  { data.county_state }</div>
             <div>{ data.country}{(data.town_city && data.county_state) ? ',':'' }  { data.postal_zip_code }</div>
           </div>
@@ -132,11 +122,21 @@ export default function SingleOrderPage() {
   };
 
   /**
-   * Render loading state
+   * Create error/loading page
    */
-  if (customerLoading) {
-    return <TemplatePage page={  { message: 'Loading...' }  } />
-  }
+  const TemplatePage = ({ page: data }) => {
+    return (
+      <Root>
+        <Head>
+          <title>commerce</title>
+        </Head>
+        <div className="py-5 my-5 text-center">
+          <h4 className="mt-4">{ data.message }</h4>
+        </div>
+        <Footer />
+      </Root>
+    )
+  };
 
   /**
    * Render logged out message if no customer is available
@@ -163,7 +163,7 @@ export default function SingleOrderPage() {
    * Render a page if no order found
    */
   if (!data) {
-    return <TemplatePage page={ {message: 'Sorry we cannot find an order with that number, if you think this is in error please contact us!'} } />
+    return <TemplatePage page={ {message: 'Sorry we cannot find an order witht that number, if you think this is in error please contact us!'} } />
   }
 
   /**
@@ -197,6 +197,7 @@ export default function SingleOrderPage() {
                 <h2 className="font-size-header mb-4 pt-5 text-center">
                   Order: #{ data.customer_reference }
                 </h2>
+                {alert}
               </div>
             </div>
             <div className="row mt-5 pt-5">
@@ -232,7 +233,7 @@ export default function SingleOrderPage() {
                   <tfoot>
                     <tr>
                       <td colSpan="3" className="border-right-0">
-                        Subtotal
+                      Zwischensumme
                       </td>
                       <td className="border-left-0 text-right">
                         { data.order.subtotal.formatted_with_symbol}
@@ -240,7 +241,7 @@ export default function SingleOrderPage() {
                     </tr>
                     <tr>
                       <td colSpan="3" className="border-right-0">
-                        Shipping
+                      Versand
                       </td>
                       <td className="border-left-0 text-right">
                         { data.order.shipping.price.formatted_with_symbol}
@@ -248,7 +249,7 @@ export default function SingleOrderPage() {
                     </tr>
                     <tr>
                       <td colSpan="3" className="border-right-0">
-                        Tax
+                      MwSt
                       </td>
                       <td className="border-left-0 text-right">
                         { data.order.tax.amount.formatted_with_symbol}

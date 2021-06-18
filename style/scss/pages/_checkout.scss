@@ -11,6 +11,13 @@
     padding-bottom: 6px;
   }
 
+  .checkout-btn {
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 60%;
+    }
+  }
+
   .checkout-summary {
     position: sticky;
     top: 15%;

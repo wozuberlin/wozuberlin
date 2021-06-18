@@ -10,12 +10,11 @@ import ClientReview from '../../components/productAssets/ClientReview';
 import SuggestedProducts from '../../components/productAssets/SuggestedProducts';
 import ExploreBanner from '../../components/productAssets/ExploreBanner';
 import Footer from '../../components/common/Footer';
-import SocialMedia from '../../components/common/SocialMedia';
 import CategoryList from '../../components/products/CategoryList';
 import reduceProductImages from '../../lib/reduceProductImages';
 
 const detailView = `<p>
-  Slightly textured fabric with tonal geometric design and a bit of shine
+Das Mobiliar hat bereits Erfahrung gesammelt, ggf. können minimale Anzeichen darauf hinweisen.
 </p>`;
 
 class Product extends Component {
@@ -51,7 +50,7 @@ class Product extends Component {
     return (
       <Root>
         <Head>
-          <title>{ product.name } | commerce</title>
+          <title>{ product.name } | WOZUBERLIN</title>
         </Head>
 
         <div className="py-5 my-5">
@@ -87,13 +86,12 @@ class Product extends Component {
               onClick={this.toggleShipping}
               className="d-flex cursor-pointer py-3 justify-content-between font-weight-medium"
             >
-              Shipping and returns
+              Versandkosten & Retourkosten
               <img src="/icon/plus.svg" />
             </div>
             <Collapse isOpened={showShipping}>
               <div className="pb-4 font-color-medium">
-                Arrives in 5 to 7 days, returns accepted within 30
-                days. For more information, click here.
+                Die Lieferzeit und Lieferpreis sind abhängig von ihren Lieferort und die Spedition
               </div>
             </Collapse>
             <div className="h-1 border-bottom border-color-black" />
@@ -101,7 +99,7 @@ class Product extends Component {
               onClick={this.toggleDetails}
               className="d-flex cursor-pointer py-3 justify-content-between font-weight-medium"
             >
-              Details
+              Einzelheiten
               <img src="/icon/plus.svg" />
             </div>
             <Collapse isOpened={showDetails}>
@@ -120,7 +118,6 @@ class Product extends Component {
       <ClientReview />
       <SuggestedProducts />
       <ExploreBanner />
-      <SocialMedia />
       <Footer />
     </Root>
     );

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 export default connect(({ categories }) => ({ categories }))(
   ({ categories, current, className }) => (
     <div className={className}>
-      <h3 className="font-size-title font-weight-medium mb-3">Products</h3>
+      <h3 className="font-size-title font-weight-medium mb-3">Sortiment</h3>
       <ul style={{ 'listStyleType': 'none' }} className="pl-0">
         { categories.map(category => (
           <Link href={`/collection#${category.slug}`} key={category.slug}>
@@ -17,7 +17,7 @@ export default connect(({ categories }) => ({ categories }))(
               style={{ 'fontWeight': current === category.id && 'bold' }}
               key={category.id} className="pb-2 cursor-pointer"
             >
-              { category.name }<sup>{ category.products }</sup>
+              { category.name }<sup>{ category.count }</sup>
             </li>
           </Link>
         ))}

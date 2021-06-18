@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Radiobox from '../../common/atoms/Radiobox';
 import ShippingForm from '../common/ShippingForm';
 
-const options = ['Same as shipping Address', 'Use a different billing address'];
+const options = ['Wie Lieferadresse', 'Verwenden Sie eine andere Rechnungsadresse'];
 
 export default class BillingDetails extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class BillingDetails extends Component {
     return (
       <>
         <p className="font-size-subheader font-weight-semibold mb-3">
-          Billing Address
+        Rechnungsadresse
         </p>
         <div className="border border-color-gray400 mb-5">
           {options.map((value, index) => (

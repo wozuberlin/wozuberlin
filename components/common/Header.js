@@ -25,17 +25,39 @@ const transitionStyles = {
 
 const mobileMenuLinks = [
   {
-    name: 'Home',
-    link: '/'
+    name: 'Wer',
+    link: '/wer'
   },
   {
-    name: 'Shop',
+    name: 'Was',
     link: '/collection'
   },
   {
-    name: 'About',
+    name: 'Warum',
     link: '/about'
+  },
+  {
+    name: 'Wozuberlin',
+    link: '/'
+  },
+  {
+    name: 'Wideruf',
+    link: '/widerufs'
+  },
+  {
+    name: 'Wichtig',
+    link: '/agb'
+  },
+  {
+    name: 'Wideruf',
+    link: '/widerufs'
+  },
+  {
+    name: 'Impressum',
+    link: '/impressum'
   }
+
+
 ];
 
 class Header extends Component {
@@ -161,14 +183,6 @@ class Header extends Component {
         </div>
       );
     }
-
-    return (
-      <Link href="/login">
-        <a className="font-color-black login">
-          Login
-        </a>
-      </Link>
-    );
   }
 
   render() {
@@ -185,12 +199,22 @@ class Header extends Component {
           }`}
         >
           <div className="d-none d-sm-flex">
+          <Link href="/wer">
+             <a href="/wer" className="mr-4 font-color-black">
+               Wer
+             </a>
+           </Link>
             <Link href="/collection">
-              <a href="/collection" className="mr-4 font-color-black">Shop</a>
+              <a href="/collection" className="mr-4 font-color-black">Was</a>
             </Link>
             <Link href="/about">
               <a href="/about" className="font-color-black">
-                About
+                Warum
+              </a>
+            </Link>
+            <Link href="/wie">
+              <a href="/wie" className="font-color-black">
+                Wie
               </a>
             </Link>
           </div>
