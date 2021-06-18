@@ -51,7 +51,7 @@ class Product extends Component {
     return (
       <Root>
         <Head>
-          <title>{ product.name } | commerce</title>
+          <title>{ product.name } | WOZUBERLIN</title>
         </Head>
 
         <div className="py-5 my-5">
@@ -87,7 +87,7 @@ class Product extends Component {
               onClick={this.toggleShipping}
               className="d-flex cursor-pointer py-3 justify-content-between font-weight-medium"
             >
-              Shipping and returns
+              Versandkosten & Retourkosten
               <img src="/icon/plus.svg" />
             </div>
             <Collapse isOpened={showShipping}>
@@ -101,7 +101,7 @@ class Product extends Component {
               onClick={this.toggleDetails}
               className="d-flex cursor-pointer py-3 justify-content-between font-weight-medium"
             >
-              Details
+              Einzelheiten
               <img src="/icon/plus.svg" />
             </div>
             <Collapse isOpened={showDetails}>

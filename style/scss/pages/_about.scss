@@ -60,10 +60,43 @@
     width: 140px;
   }
 
+  img {
+    vertical-align: middle;
+    border-style: none;
+    width: 100%;
+    }
+    video {
+      filter: contrast(100%) brightness(300%) grayscale(0%);
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    img {
+      transition: filter .5s ease-in-out;
+      -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+      filter: grayscale(100%); /* FF 35+ */
+      -moz-filter: grayscale(100%);
+       -ms-filter: grayscale(100%);
+       filter: grayscale(100%);
+       filter: gray; /* IE 6-9 */
+    }
+    
+    img:hover {
+      -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+      filter: grayscale(0%); /* FF 35+ */
+    }
+    
   .about-image {
     img {
       @include small-xs {
        display: none;
+       width: 100%;
       }
     }
   }
