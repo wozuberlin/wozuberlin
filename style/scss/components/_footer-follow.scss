@@ -3,8 +3,7 @@
     @include sm {
       margin-bottom: -1.5rem;
       flex-grow: 3;
-      max-width: 60%;
-      margin-left: 40%;
+      max-width: 100%;
     }
   }
 
@@ -19,20 +18,20 @@
     }
 
     .follow-images:nth-child(1) {
-      padding-top: 112px;
+      padding-top: 0;
 
       @include sm {
         padding-top: 0;
-        padding-bottom: 194px;
+        padding-bottom: 0;
       }
     }
     .follow-images:nth-child(2) {
       @include sm {
-        padding-bottom: 40px;
+        padding-bottom: 0;
       }
     }
     .follow-images:nth-child(3) {
-      padding-bottom: 114px;
+      padding-bottom: 0;
       display: none;
 
       @include sm {
@@ -40,14 +39,14 @@
       }
     }
     .follow-images:nth-child(4) {
-      display: none;
+      display: flex;
 
       @include lg {
         display: flex;
       }
     }
     .follow-images:nth-child(5) {
-      padding-bottom: 154px;
+      padding-bottom: 0;
 
       display: none;
 

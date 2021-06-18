@@ -7,6 +7,15 @@
     padding: 0;
   }
 
+  .wer-container {
+    padding: 1rem 3rem 0;
+    max-width: 1600px;
+    margin: 0 auto;
+  
+    @include small-xs {
+      padding: 0;
+    }
+
   .row {
     padding-bottom: 8rem;
     @include small-xs {
@@ -48,11 +57,11 @@
   }
 
   .about-net {
-    background-color: #29A38A;
+    background-color: #7a7a7a;
   }
 
   .about-gb {
-    background-color: #283341;
+    background-color: #7a7a7a;
   }
 
   .about-blog {
@@ -67,4 +76,5 @@
       }
     }
   }
+}
 }

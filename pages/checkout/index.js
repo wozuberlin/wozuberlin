@@ -363,8 +363,7 @@ class CheckoutPage extends Component {
       shipping: {
         name: this.state['shipping[name]'],
         country: this.state.deliveryCountry,
-        street: this.state['shipping[street]'],
-        street_2: this.state.street2,
+        street: this.state['shipping[street]'] + this.state.street2,
         town_city: this.state['shipping[town_city]'],
         county_state: this.state.deliveryRegion,
         postal_zip_code: this.state['shipping[postal_zip_code]']
@@ -587,7 +586,7 @@ class CheckoutPage extends Component {
                     </p>
                     <button
                       type="submit"
-                      className="bg-black font-color-white w-100 border-none h-56 font-weight-semibold d-none d-lg-block"
+                      className="bg-black font-color-white w-100 border-none h-56 font-weight-semibold d-none d-lg-block checkout-btn"
                       disabled={!selectedShippingOption}
                       onClick={this.captureOrder}
                     >
@@ -638,7 +637,7 @@ class CheckoutPage extends Component {
                 <form className="row py-3 borderbottom border-color-gray400">
                   <input
                     name="discountCode"
-                    onChange={this.handleChangeForm}
+                    onChange={this.handleFormChanges}
                     value={this.state.discountCode}
                     placeholder="Gift card or discount code"
                     className="mr-2 col"
@@ -654,19 +653,19 @@ class CheckoutPage extends Component {
                 <div className="py-3 borderbottom border-color-black">
                   {[
                     {
-                      name: 'Subtotal',
+                      name: 'Zwischensumme',
                       amount: checkout.live ? checkout.live.subtotal.formatted_with_symbol : '',
                     },
                     {
-                      name: 'Tax',
+                      name: 'MwSt',
                       amount: checkout.live ? checkout.live.tax.amount.formatted_with_symbol : '',
                     },
                     {
-                      name: 'Shipping',
+                      name: 'Versand',
                       amount: selectedShippingOption ? `${selectedShippingOption.description} - ${selectedShippingOption.price.formatted_with_symbol}` : 'No shipping method selected',
                     },
                     {
-                      name: 'Discount',
+                      name: 'Rabatt',
                       amount: (checkout.live && checkout.live.discount && checkout.live.discount.code) ? `Saved ${checkout.live.discount.amount_saved.formatted_with_symbol}` : 'No discount code applied',
                     }
                   ].map((item, i) => (
@@ -680,7 +679,7 @@ class CheckoutPage extends Component {
                 </div>
                 <div className="d-flex justify-content-between align-items-center mb-2 pt-3">
                   <p className="font-size-title font-weight-semibold">
-                    Total amount
+                  Gesamtbetrag
                   </p>
                   <p className="text-right font-weight-semibold font-size-title">
                     $ { checkout.live ? checkout.live.total.formatted_with_code : '' }
@@ -693,7 +692,7 @@ class CheckoutPage extends Component {
                   onClick={this.captureOrder}
                   disabled={!selectedShippingOption}
                 >
-                  Make payment
+                  Zahlung ausführen
                 </button>
               </div>
             </div>

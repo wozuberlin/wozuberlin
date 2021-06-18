@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Head from 'next/head';
 import Root from '../../components/common/Root';
 import Footer from '../../components/common/Footer';
-import TemplatePage from '../../components/common/TemplatePage';
 import LoggedOut from '../loggedOut';
 import Link from 'next/link';
 import commerce from '../../lib/commerce';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import Router, { withRouter } from 'next/router';
+
 
 class CustomerAccountPage extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class CustomerAccountPage extends Component {
     if (!isLogged) {
       return Router.push('/');
     }
-    this.getOrders();
+    this.getOrders()
   }
 
   /**
@@ -154,7 +154,7 @@ class CustomerAccountPage extends Component {
       );
     }
 
-    const { shipping } = this.state.orders[0];
+    const { shipping } = this.state.orders.data[0];
 
     if (!shipping) {
       return null;
@@ -164,7 +164,6 @@ class CustomerAccountPage extends Component {
       <div>
         <div>{ shipping.name }</div>
         <div>{ shipping.street }</div>
-        { shipping.street_2 && <div>{ shipping.street_2 }</div> }
         <div>{ shipping.town_city}{(shipping.town_city && shipping.county_state) ? ',':'' } { shipping.county_state }</div>
         <div>{ shipping.country}{(shipping.country && shipping.postal_zip_code) ? ',':'' } { shipping.postal_zip_code }</div>
       </div>
@@ -174,7 +173,7 @@ class CustomerAccountPage extends Component {
   renderOrdersTable() {
     const { orders } = this.state;
 
-    if (!orders || !orders.length) {
+    if (!orders || orders.length) {
       return (
         <div className="card text-center p-2">
           <p>You haven't placed any orders yet!</p>
@@ -194,7 +193,7 @@ class CustomerAccountPage extends Component {
         </tr>
       </thead>
       <tbody>
-        {this.state.orders.map((order) => {
+        {(this.state.orders && this.state.orders.data ? this.state.orders.data : []).map((order) => {
           return (
             <tr key={ order.id }>
               <td>
@@ -248,11 +247,6 @@ class CustomerAccountPage extends Component {
   }
 
   render() {
-
-    if (this.props.loading.customer) {
-      return <TemplatePage page={  { message: 'Loading...' }  } />
-    }
-
     // Displays message when the customer logs out.
     if (!this.props.customer) {
       return (
@@ -320,7 +314,6 @@ class CustomerAccountPage extends Component {
 const mapStateToProps = (state) => {
   return {
     customer: state.customer,
-    loading: state.loading,
   };
 };
 

@@ -46,7 +46,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-4 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                First name*
+              Vorname*
               </p>
               <input name="firstName" value={firstName} className="rounded-0 w-100" />
             </label>
@@ -54,7 +54,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-4 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Middle name (optional)
+              Zweitname (optional)
               </p>
               <input className="rounded-0 w-100" />
             </label>
@@ -62,7 +62,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-4 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Last name*
+              Nachname*
               </p>
               <input name="lastName" value={lastName} className="rounded-0 w-100" />
             </label>
@@ -72,7 +72,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Country*
+              Land*
               </p>
               <Dropdown
                 name="deliveryCountry"
@@ -100,7 +100,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Address line 1*
+              Anschrift Zeile 1*
               </p>
               <input
                 name="shipping[street]"
@@ -113,7 +113,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Address line 2 (optional)
+              Anschrift Zeile 2 (optional)
               </p>
               <input
                 name="street2"
@@ -128,7 +128,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                State/province/region*
+              Staat / Provinz / Region*
               </p>
               <Dropdown
                 name="deliveryRegion"
@@ -148,7 +148,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Postal code*
+              Postleitzahl*
               </p>
               <input
                 name="shipping[postal_zip_code]"
@@ -170,7 +170,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 col-sm-6 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Email address*
+                Email adresse*
               </p>
               <input
                 name="customer[email]"
@@ -184,7 +184,7 @@ export default class ShippingForm extends Component {
           <div className="col-12 mb-3">
             <label className="w-100">
               <p className="mb-1 font-size-caption font-color-light">
-                Shipping method*
+              Versandart*
               </p>
               <Dropdown
                 name="fulfillment[shipping_method]"
@@ -216,14 +216,14 @@ export default class ShippingForm extends Component {
             className="mr-3"
           />
           <p>
-            Receive our news, restocking, good plans and news in your mailbox!
-            Rest assured, you will not be flooded, we only send one newsletter
-            per month approximately 🙂
+            Erhalten Sie unsere Neuigkeiten, Lagerauffüllungen, guten Pläne und Neuigkeiten in Ihrer Mailbox!
+            Seien Sie versichert, Sie werden nicht überflutet, wir versenden nur einen Newsletter
+            pro Monat ca. 🙂
           </p>
         </div>
         <label className="w-100 mb-3">
           <p className="mb-1 font-size-caption font-color-light">
-            Order notes (optional)
+          Bestellhinweise (optional)
           </p>
           <textarea name="orderNotes" value={orderNotes} className="rounded-0 w-100" />
         </label>

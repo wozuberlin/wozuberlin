@@ -12,7 +12,7 @@ import ProductsBanner from '../components/homepage/ProductsBanner';
 const Home = () => (
   <Root transparentHeader={true}>
     <Head>
-      <title>Home | commerce</title>
+      <title>Home | wozuberlin</title>
     </Head>
 
     <HeroSection />
@@ -20,7 +20,6 @@ const Home = () => (
     <CategoryBanner />
     <ProductsBanner />
     <ExploreBanner />
-    <SocialMedia />
     <Footer />
   </Root>
 );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 
 const imagesInfo = [
   {
@@ -76,24 +77,28 @@ export default class SocialMedia extends React.Component {
             <div className="px-3 footer-follow--title">
               <p
                 className="font-size-display1 mb-3"
-                style={{ maxWidth: '26rem' }}
+                style={{ maxWidth: '90' }}
               >
-                Follow us on Instagram for more updates
+                Unsere Produktseite wird fortwährend aktualisiert, somit haben Sie stets im Blick welche Artikel in welcher Menge verfügbar sind. Die Preise verstehen sich inkl. MwSt, die Transportkosten richten sich jeweils nach Lieferumfang und Entfernung zum Lieferort. Wir arbeiten eng zusammen mit erfahrenen Partnerspeditionen, die dafür sorgt, dass Ihre Ware sicher und kostengünstig transportiert wird.
               </p>
               <div className="d-flex">
                 <a
                   href="/about"
                   className="d-flex py-3 align-items-center font-color-black borderbottom border-color-black"
                 >
-                  <p className="mr-3">Follow us</p>
+                  <p className="mr-3">Finde was passendes</p>
                   <img src="/icon/arrow-long-right.svg" alt="Arrow icon"/>
                 </a>
               </div>
             </div>
           </div>
           <div className="d-flex footer-follow--images">
+
             {imagesInfo.map((item, i) => (
               <div key={i} className="justify-content-sm-end flex-column follow-images">
+                <Link href="/collection">
+  <a href="/collection" className="mr-4 font-color-black"></a>
+</Link>
                 <div
                   ref={image => this.images.push(image)}
                   style={{
@@ -103,6 +108,7 @@ export default class SocialMedia extends React.Component {
                 />
               </div>
             ))}
+
           </div>
         </div>
       </footer>
